@@ -91,4 +91,4 @@ Optional argument:
 ## Notes
 
 - The Gazebo bridge configuration is defined in [config/ros_gz_bridge_gazebo.yaml](config/ros_gz_bridge_gazebo.yaml).
-- The robot model is generated from [urdf/perez_ros.xacro](urdf/perez_ros.xacro).
+- The robot model is generated from [urdf/perez_ros.xacro](urdf/perez_ros.xacro). The URDF was generated from the Blender CAD design using Phobos (https://www.youtube.com/playlist?list=PL6vSC9suLAKO0eM-cKVdrPWOi6srjGga4)
