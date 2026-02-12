@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<robot name="perez_ros" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find perez)/urdf/materials.xacro" />
+  <xacro:include filename="$(find perez)/urdf/perez_ros.gazebo.xacro" />
+
+  <joint name="camera_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="1.43905 0.00396 0.18036" />
+    <parent link="Cube_link" />
+    <child link="camera_link" />
+  </joint>
+
+  <joint name="left_back_wheel_link_joint" type="continuous">
+    <origin rpy="-1.57080 0.00000 0.00000" xyz="-1.08220 1.12533 -0.15000" />
+    <parent link="Cube_link" />
+    <child link="left_back_wheel_link" />
+    <axis xyz="0.00000 0.00000 1.00000" />
+  </joint>
+  <joint name="left_front_wheel_link_joint" type="continuous">
+    <origin rpy="-1.57080 0.00000 0.00000" xyz="1.08220 1.12533 -0.15000" />
+    <parent link="Cube_link" />
+    <child link="left_front_wheel_link" />
+    <axis xyz="0.00000 0.00000 1.00000" />
+  </joint>
+  <joint name="lidar_link_joint" type="fixed">
+    <origin rpy="0.00000 0.00000 0.00000" xyz="1.00000 0.00000 0.40000" />
+    <parent link="Cube_link" />
+    <child link="lidar_link" />
+  </joint>
+  <joint name="right_back_wheel_link_joint" type="continuous">
+    <origin rpy="1.57080 0.00000 0.00000" xyz="-1.08220 -1.12533 -0.15000" />
+    <parent link="Cube_link" />
+    <child link="right_back_wheel_link" />
+    <axis xyz="0.00000 0.00000 -1.00000" />
+  </joint>
+  <joint name="right_front_wheel_link_joint" type="continuous">
+    <origin rpy="1.57080 0.00000 0.00000" xyz="1.08220 -1.12533 -0.15000" />
+    <parent link="Cube_link" />
+    <child link="right_front_wheel_link" />
+    <axis xyz="0.00000 0.00000 -1.00000" />
+  </joint>
+  <link name="Cube_link">
+    <collision name="Cube_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000" />
+      <geometry>
+        <box size="3.00000 2.00000 0.60000" />
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.34880" ixy="0.00000" ixz="0.00000" iyy="0.74880" iyz="0.00000" izz="1.04000" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000" />
+      <mass value="0.96000" />
+    </inertial>
+    <visual name="Cube">
+      <material name="body" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <geometry>
+        <box size="3.00000 2.00000 0.60000" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="camera_link">
+    <collision name="camera_collision">
+      <origin rpy="-0.00000 -0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000" />
+      <geometry>
+        <box size="0.09091 0.09091 0.20000" />
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00132" ixy="0.00000" ixz="-0.00000" iyy="0.00386" iyz="0.00000" izz="0.00386" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <mass value="0.96000" />
+    </inertial>
+    <visual name="camera">
+      <material name="camera" />
+      <origin rpy="-1.57080 -1.57080 0.00000" xyz="-0.00000 -0.00000 0.00000" />
+      <geometry>
+        <box size="0.20000 0.09091 0.09091" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="left_back_wheel_link">
+    <collision name="left_back_wheel_collision">
+      <origin rpy="0.00000 -0.00000 -1.57080" xyz="0.00000 0.00000 0.00000" />
+      <geometry>
+        <cylinder radius="0.30000" length="0.20000" />
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.02480" ixy="0.00000" ixz="0.00000" iyy="0.04320" iyz="-0.00000" izz="0.02480" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <mass value="0.96000" />
+    </inertial>
+    <visual name="left_back_wheel">
+      <material name="tire" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000" />
+      <geometry>
+        <cylinder radius="0.30000" length="0.20000" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="left_front_wheel_link">
+    <collision name="left_front_wheel_collision">
+      <origin rpy="-0.00000 -0.00000 1.57080" xyz="0.00000 0.00000 0.00000" />
+      <geometry>
+        <cylinder radius="0.30000" length="0.20000" />
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.02480" ixy="0.00000" ixz="0.00000" iyy="0.04320" iyz="-0.00000" izz="0.02480" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <mass value="0.96000" />
+    </inertial>
+    <visual name="left_front_wheel">
+      <material name="tire" />
+      <origin rpy="-0.00000 0.00000 -2.39675" xyz="-0.00000 0.00000 0.00000" />
+      <geometry>
+        <cylinder radius="0.30000" length="0.20000" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="lidar_link">
+    <collision name="lidar_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <geometry>
+        <cylinder radius="0.25000" length="0.30000" />
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.02220" ixy="0.00000" ixz="0.00000" iyy="0.02220" iyz="0.00000" izz="0.03000" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <mass value="0.96000" />
+    </inertial>
+    <visual name="lidar">
+      <material name="lidar" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <geometry>
+        <cylinder radius="0.25000" length="0.30000" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="right_back_wheel_link">
+    <collision name="right_back_wheel_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <geometry>
+        <cylinder radius="0.30000" length="0.20000" />
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.02480" ixy="0.00000" ixz="0.00000" iyy="0.04320" iyz="-0.00000" izz="0.02480" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <mass value="0.96000" />
+    </inertial>
+    <visual name="right_back_wheel">
+      <material name="tire" />
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <geometry>
+        <cylinder radius="0.30000" length="0.20000" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="right_front_wheel_link">
+    <collision name="right_front_wheel_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000" />
+      <geometry>
+        <cylinder radius="0.30000" length="0.20000" />
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.02480" ixy="0.00000" ixz="0.00000" iyy="0.04320" iyz="0.00000" izz="0.02480" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000" />
+      <mass value="0.96000" />
+    </inertial>
+    <visual name="right_front_wheel">
+      <material name="tire" />
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000" />
+      <geometry>
+        <cylinder radius="0.30000" length="0.20000" />
+      </geometry>
+    </visual>
+  </link>
+</robot>
